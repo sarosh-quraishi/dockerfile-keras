@@ -17,7 +17,8 @@ docker build -t keras_jupyter:cpu --build-arg http_proxy=$http_proxy --build-arg
 Run an example from keras examples directory within jupyter notebook:
 
 ```sh
-docker run -d -p 8888:8888 -v /home/sarosh/Documents/keras/examples:/ -e KERAS_BACKEND=tensorflow -e http_proxy=$http_proxy -e https_proxy=$http_proxy keras_jupyter:cpu
+docker run -d -p 8888:8888 -v /home/sarosh/Documents/keras/examples:/keras_examples -e KERAS_BACKEND=tensorflow -e http_proxy=$http_proxy -e https_proxy=$http_proxy keras_jupyter:cpu
+
 ```
 
 
