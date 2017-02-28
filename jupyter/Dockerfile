@@ -1,4 +1,4 @@
-FROM tensorflow:cpu
+FROM keras:cpu
 
 RUN conda install -y \
     jupyter \
