@@ -1,32 +1,25 @@
 # dockerfile-keras
 
-Dockerized [Keras] with [Theano] and [TensorFlow].
+Dockerized [Keras] with [TensorFlow].
 
 ## Get Started
 
-Run an example:
-
+Build an keras and keras+jupyter containers:
 ```sh
-docker run --rm -it ermaker/keras sh -c 'curl -sSL https://github.com/fchollet/keras/raw/master/examples/mnist_mlp.py | python'
+docker build -t keras:cpu --build-arg http_proxy=$http_proxy --build-arg https_proxy=$http_proxy  .
 ```
 
-Run [Keras] with [TensorFlow]: (See [this][Keras Backend] for more information)
-
 ```sh
-docker run --rm -it -e KERAS_BACKEND=tensorflow ermaker/keras sh -c 'curl -sSL https://github.com/fchollet/keras/raw/master/examples/mnist_mlp.py | python'
+docker build -t keras_jupyter:cpu --build-arg http_proxy=$http_proxy --build-arg https_proxy=$http_proxy Dockerfile.jupyter
 ```
 
-Check the backend:
+
+Run an example from keras examples directory within jupyter notebook:
 
 ```sh
-docker run --rm -it -e KERAS_BACKEND=tensorflow ermaker/keras python -c "from keras import backend; print backend._BACKEND"
+docker run -d -p 8888:8888 -v /home/sarosh/Documents/keras/examples:/ -e KERAS_BACKEND=tensorflow -e http_proxy=$http_proxy -e https_proxy=$http_proxy keras_jupyter:cpu
 ```
 
-Run your script:
-
-```sh
-docker run --rm -it -v $(pwd)/YOUR_SCRIPT.py:/YOUR_SCRIPT.py:ro ermaker/keras python YOUR_SCRIPT.py
-```
 
 [Keras]: http://keras.io/
 [Theano]: http://deeplearning.net/software/theano/
