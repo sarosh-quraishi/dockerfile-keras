@@ -21,6 +21,8 @@ docker run -d -p 8888:8888 -v /home/sarosh/Documents/keras/examples:/keras_examp
 
 ```
 
+Just browse localhost:8888 and write code with Keras!
+
 
 [Keras]: http://keras.io/
 [Theano]: http://deeplearning.net/software/theano/
