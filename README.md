@@ -10,7 +10,7 @@ docker build -t keras:cpu --build-arg http_proxy=$http_proxy --build-arg https_p
 ```
 
 ```sh
-docker build -t keras_jupyter:cpu --build-arg http_proxy=$http_proxy --build-arg https_proxy=$http_proxy Dockerfile.jupyter
+docker build -t keras_jupyter:cpu --build-arg http_proxy=$http_proxy --build-arg https_proxy=$http_proxy ./jupyter
 ```
 
 
