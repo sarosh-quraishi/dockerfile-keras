@@ -17,9 +17,8 @@ ENV PATH=/root/miniconda2/bin:$PATH
 RUN conda install -y \
     h5py \
     pandas \
-    theano \
   && conda clean --yes --tarballs --packages --source-cache \
   && pip install --upgrade -I setuptools \
   && pip install --upgrade \
     keras \
-    https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-0.9.0rc0-cp27-none-linux_x86_64.whl
+    https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-1.0.0-cp27-none-linux_x86_64.whl
