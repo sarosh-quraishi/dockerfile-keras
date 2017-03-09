@@ -6,18 +6,18 @@ Dockerized [Keras] with [TensorFlow].
 
 Build an keras and keras+jupyter containers:
 ```sh
-docker build -t keras:cpu --build-arg http_proxy=$http_proxy --build-arg https_proxy=$http_proxy  .
+docker build -t keras:cpu --build-arg http_proxy=$http_proxy --build-arg https_proxy=$https_proxy  .
 ```
 
 ```sh
-docker build -t keras_jupyter:cpu --build-arg http_proxy=$http_proxy --build-arg https_proxy=$http_proxy ./jupyter
+docker build -t keras_jupyter:cpu --build-arg http_proxy=$http_proxy --build-arg https_proxy=$https_proxy ./jupyter
 ```
 
 
 Run an example from keras examples directory within jupyter notebook:
 
 ```sh
-docker run -d -p 8888:8888 -v /home/sarosh/Documents/keras/examples:/keras_examples -e KERAS_BACKEND=tensorflow -e http_proxy=$http_proxy -e https_proxy=$http_proxy keras_jupyter:cpu
+docker run -d -p 8888:8888 -v /home/sarosh/Documents/keras/examples:/keras_examples -e KERAS_BACKEND=tensorflow -e http_proxy=$http_proxy -e https_proxy=$https_proxy keras_jupyter:cpu
 
 ```
 
