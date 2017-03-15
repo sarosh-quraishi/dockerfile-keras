@@ -7,18 +7,17 @@ RUN apt-get update \
     git \
   && rm -rf /var/lib/apt/lists/*
 
-RUN curl -qsSLkO \
-    https://repo.continuum.io/miniconda/Miniconda-latest-Linux-`uname -p`.sh \
-  && bash Miniconda-latest-Linux-`uname -p`.sh -b \
-  && rm Miniconda-latest-Linux-`uname -p`.sh
+# Install Python.
+RUN \
+  apt-get update && \
+  apt-get install -y python python-dev python-pip python-virtualenv && \
+  rm -rf /var/lib/apt/lists/*
 
-ENV PATH=/root/miniconda2/bin:$PATH
 
-RUN conda install -y \
-    h5py \
-    pandas \
-  && conda clean --yes --tarballs --packages --source-cache \
+RUN \
+     pip install h5py \
+  && pip install pandas \
   && pip install --upgrade -I setuptools \
   && pip install --upgrade \
-    keras \
+    keras  \
     https://storage.googleapis.com/tensorflow/linux/cpu/tensorflow-1.0.0-cp27-none-linux_x86_64.whl
